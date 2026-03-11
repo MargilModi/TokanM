@@ -1,53 +1,112 @@
-# TokanM Documentation
+# TokanM
+
+An ERC20 token smart contract built with [Hardhat](https://hardhat.org/) and [OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts/).
 
 ## Token Details
-- **Name:** TokanM Token
-- **Symbol:** TM
-- **Total Supply:** 1,000,000 TM
-- **Decimals:** 18
 
-## Installation Instructions
-1. Clone the repository:
+| Property     | Value           |
+|-------------|-----------------|
+| Name        | TokanM Token    |
+| Symbol      | TM              |
+| Total Supply | 1,000,000 TM   |
+| Decimals    | 18              |
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) v18 or later
+- npm (comes with Node.js)
+- Git
+
+## Quick Start
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/MargilModi/TokanM.git
+cd TokanM
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Compile the contract
+
+```bash
+npx hardhat compile
+```
+
+### 4. Run tests
+
+```bash
+npx hardhat test
+```
+
+## Deployment
+
+### Deploy to a local Hardhat node
+
+Open one terminal and start a local blockchain:
+
+```bash
+npx hardhat node
+```
+
+In a second terminal, deploy the contract:
+
+```bash
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+### Deploy to Sepolia testnet
+
+1. Copy the example environment file and fill in your values:
+
    ```bash
-   git clone https://github.com/MargilModi/TokanM.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd TokanM
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
+   cp .env.example .env
    ```
 
-## Deployment Guide
-To deploy the TokanM smart contract on Ethereum:
-1. Set up a wallet and fund it with Ether.
-2. Ensure you have Truffle or Hardhat installed.
-3. Configure the `truffle-config.js` or `hardhat.config.js` with your network information.
-4. Run the deployment command:
-   ```bash
-   truffle migrate --network <network_name>
+2. Edit `.env`:
+
    ```
-   or
-   ```bash
-   npx hardhat run scripts/deploy.js --network <network_name>
+   PRIVATE_KEY=your_wallet_private_key
+   SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/your_project_id
+   ETHERSCAN_API_KEY=your_etherscan_api_key
    ```
 
-## Usage Examples
-After deploying the contract, you can interact with it using:
-```javascript
-const TokanM = artifacts.require('TokanM');
+3. Deploy:
 
-(async () => {
-    const instance = await TokanM.deployed();
-    const totalSupply = await instance.totalSupply();
-    console.log('Total Supply:', totalSupply.toString());
-})();
+   ```bash
+   npx hardhat run scripts/deploy.js --network sepolia
+   ```
+
+4. (Optional) Verify on Etherscan:
+
+   ```bash
+   npx hardhat verify --network sepolia <DEPLOYED_CONTRACT_ADDRESS>
+   ```
+
+## Project Structure
+
+```
+TokanM/
+├── contracts/
+│   └── TokanM.sol        # ERC20 token contract
+├── scripts/
+│   └── deploy.js         # Deployment script
+├── test/
+│   └── TokanM.test.js    # Contract tests
+├── .env.example          # Environment variable template
+├── .gitignore
+├── hardhat.config.js     # Hardhat configuration
+└── package.json
 ```
 
 ## Learning Resources
+
 - [Ethereum Documentation](https://ethereum.org/en/developers/docs/)
-- [Truffle Suite](https://www.trufflesuite.com/docs/truffle/overview)
-- [Hardhat](https://hardhat.org/getting-started/#installation)
+- [Hardhat Docs](https://hardhat.org/getting-started/)
+- [OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts/)
 - [Solidity Docs](https://soliditylang.org/docs/)
