@@ -312,6 +312,8 @@ typechain-types/
 .env
 
 *.log
+
+package-lock.json
 ```
 
 ### After creating the files
