@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Hardhat artifacts & cache
+artifacts/
+cache/
+typechain-types/
+
+# Environment variables
+.env
+
+# Coverage
+coverage/
+coverage.json
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db
