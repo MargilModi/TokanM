@@ -80,6 +80,31 @@ TokanM/
 └── package.json
 ```
 
+## Troubleshooting
+
+**`npm error enoent Could not read package.json`**  
+You are on the `main` branch before the project files were added. Run:
+```bash
+git pull origin main
+npm install
+```
+If `git pull` reports "Already up to date" but `package.json` is still missing, your local branch may be stale. Re-clone the repository:
+```bash
+git clone https://github.com/MargilModi/TokanM.git
+cd TokanM
+npm install
+```
+
+**`error: The following untracked working tree files would be overwritten by checkout: package-lock.json`**  
+A stale `package-lock.json` exists in your working tree from a previous run. Delete it and retry:
+```bash
+# Windows
+del package-lock.json
+
+# macOS / Linux
+rm package-lock.json
+```
+
 ## Learning Resources
 
 - [Ethereum Documentation](https://ethereum.org/en/developers/docs/)
