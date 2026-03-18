@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "ERC20 Token using Hardhat and OpenZeppelin",
   "scripts": {
+    "postinstall": "node scripts/setup-compiler.js",
+    "setup": "node scripts/setup-compiler.js",
     "compile": "hardhat compile",
     "test": "hardhat test",
     "deploy:local": "hardhat run scripts/deploy.js --network localhost",
@@ -10,7 +12,8 @@
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",
-    "hardhat": "^2.17.2"
+    "hardhat": "^2.17.2",
+    "solc": "0.8.20"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.3",
