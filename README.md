@@ -24,7 +24,7 @@ An ERC20 token project built with [Hardhat](https://hardhat.org/) and [OpenZeppe
    cd TokanM
    ```
 
-2. **Install dependencies**
+2. **Install dependencies** *(also sets up the Solidity compiler automatically)*
    ```bash
    npm install
    ```
@@ -46,6 +46,9 @@ An ERC20 token project built with [Hardhat](https://hardhat.org/) and [OpenZeppe
    npm test
    # or: npx hardhat test
    ```
+
+> **Note:** `npm install` runs `scripts/setup-compiler.js` automatically as a `postinstall` hook.
+> This seeds the Hardhat compiler cache from the bundled `solc` package so no external download is required.
 
 ## Sample Output
 
@@ -120,6 +123,13 @@ TokanM/
 
 ## Troubleshooting
 
+**`Error HH502: Couldn't download compiler version list`**  
+The Solidity compiler download from `binaries.soliditylang.org` is blocked on your machine. Fix it by running:
+```bash
+npm run setup
+```
+This seeds the compiler cache from the locally installed `solc` npm package (no internet needed). Then `npm run compile` and `npm test` will work normally.
+
 **`npm error enoent Could not read package.json`**  
 Your local folder is missing required project files. First try pulling the latest version:
 ```bash
@@ -155,6 +165,8 @@ If you cannot `git clone` or `git pull` due to network issues, create each file 
   "version": "1.0.0",
   "description": "ERC20 Token using Hardhat and OpenZeppelin",
   "scripts": {
+    "postinstall": "node scripts/setup-compiler.js",
+    "setup": "node scripts/setup-compiler.js",
     "compile": "hardhat compile",
     "test": "hardhat test",
     "deploy:local": "hardhat run scripts/deploy.js --network localhost",
@@ -162,7 +174,8 @@ If you cannot `git clone` or `git pull` due to network issues, create each file 
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",
-    "hardhat": "^2.17.2"
+    "hardhat": "^2.17.2",
+    "solc": "^0.8.20"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.3",
