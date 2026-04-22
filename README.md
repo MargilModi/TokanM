@@ -13,8 +13,29 @@ An ERC20 token project built with [Hardhat](https://hardhat.org/) and [OpenZeppe
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) v16 or later
+- [Node.js](https://nodejs.org/) **v20 LTS (recommended)**
 - npm v7 or later
+
+## Node Version Setup (Recommended)
+
+This project includes `.nvmrc` pinned to Node 20.
+
+### macOS / Linux (`nvm`)
+
+```bash
+nvm install
+nvm use
+```
+
+### Windows (`nvm-windows`)
+
+```powershell
+nvm install 20
+nvm use 20
+node -v
+```
+
+If you are on Node 23+, Hardhat may warn that your version is unsupported.
 
 ## Quick Start
 

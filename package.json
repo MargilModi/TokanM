@@ -2,18 +2,24 @@
   "name": "tokanm",
   "version": "1.0.0",
   "description": "ERC20 Token using Hardhat and OpenZeppelin",
+  "engines": {
+    "node": ">=20 <23",
+    "npm": ">=9"
+  },
   "scripts": {
-    "compile": "hardhat compile",
-    "test": "hardhat test",
-    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
-    "deploy:testnet": "hardhat run scripts/deploy.js --network sepolia"
+    "compile": "cross-env CI=true hardhat compile",
+    "test": "cross-env CI=true hardhat test",
+    "deploy:local": "cross-env CI=true hardhat run scripts/deploy.js --network localhost",
+    "deploy:testnet": "cross-env CI=true hardhat run scripts/deploy.js --network sepolia"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "cross-env": "^7.0.3",
     "hardhat": "^2.17.2"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.3",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "ethers": "^5.8.0"
   }
 }
